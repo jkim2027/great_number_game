@@ -13,10 +13,14 @@ def index(request):
 
 
 def validate_guess(request):
-    if int(request.POST['users_guess']) < int(request.session['random']):
-        return redirect("/")
-    if int(request.POST['users_guess']) > int(request.session['random']):
-        return redirect("/")
-    if int(request.POST['users_guess']) == int(request.session['random']):
+    users_guess = int(request.POST['users_guess'])
+    random_num = int(request.session['random'])
+    context = {
+        "guess_template": users_guess,
+        "random_template": random_num
+    }
+    if users_guess < random_num or users_guess > random_num:
+        return render(request, "index.html", context)
+    if users_guess == random_num:
         del request.session['random']
         return render(request, "again.html")

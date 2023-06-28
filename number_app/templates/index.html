@@ -11,6 +11,11 @@
     <h2>Welcome to the Great Number Game!</h2>
     <p>I am thinking of a number between 1 and 100</p>
     <p>Take a guess!</p>
+    {% if guess_template < random_template %}
+    <p>too low!</p>
+    {% elif guess_template > random_template %}
+    <p>too high!</p>
+    {% endif %}
     <form action="/guess" method="post">
         {% csrf_token %}
         <div class="mb-3">
