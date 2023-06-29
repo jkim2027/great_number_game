@@ -5,23 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Great Number Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-    <h2>Welcome to the Great Number Game!</h2>
+    <h1>Welcome to the Great Number Game!</h1>
     <p>I am thinking of a number between 1 and 100</p>
     <p>Take a guess!</p>
     {% if guess_template < random_template %}
-    <p>too low!</p>
+    <p id="low">Too low!</p>
     {% elif guess_template > random_template %}
-    <p>too high!</p>
+    <p id="high">Too high!</p>
     {% endif %}
     <form action="/guess" method="post">
         {% csrf_token %}
-        <div class="mb-3">
-            <input type="number" class="form-control" name="users_guess">
+        <div>
+            <input type="number" name="users_guess">
         </div>
-        <button class="btn btn-primary" type='submit'>Submit</button>
+        <button type='submit'>Submit</button>
     </form>
 </body>
 
