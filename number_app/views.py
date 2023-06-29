@@ -23,4 +23,4 @@ def validate_guess(request):
         return render(request, "index.html", context)
     if users_guess == random_num:
         del request.session['random']
-        return render(request, "again.html")
+        return render(request, "again.html", context)

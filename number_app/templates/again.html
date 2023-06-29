@@ -5,12 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Great Number Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-    <h2>Welcome to the Great Number Game!</h2>
-    <p>You got it!</p>
-    <a href="/">Play again!</a>
+    <h1>Welcome to the Great Number Game!</h1>
+    <p>I am thinking of a number between 1 and 100</p>
+    <p>Take a guess!</p>
+    <div class="correct">
+        <p>{{ random_template }} was the number!</p>
+        <a href="/" id="play">Play again!</a>
+    </div>
 </body>
 
 </html>
